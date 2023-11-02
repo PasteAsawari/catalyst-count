@@ -1,0 +1,71 @@
+{% extends "base.html"%}
+{% block title%}query Builder{% endblock title%}
+{% block body%}
+<div class="container-fluid">
+    <p> Query Builder:</p>
+
+    <form class="row g-3">
+        <div class="col-md-3">
+          <label for="validationServer01" class="form-label">Industry</label>
+          <select class="form-select" id="validationServer01" aria-describedby="validationServer01Feedback" required>
+            <option selected disabled value="">Industry</option>
+            {% if members %}
+            {% for member in members%}
+            <option value="{{member.industry}}">{{member.industry}}</option>
+            {%endfor%}
+            {% endif %}
+          </select>
+        </div>
+
+        <div class="col-md-3">
+            <label for="validationServer02" class="form-label">Year Founded</label>
+            <select class="form-select" id="validationServer02" aria-describedby="validationServer02Feedback" required>
+              <option selected>Year Founded</option>
+              <option>
+                {% if years %}
+                {% for year in years%}
+                <option value="{{year.year_founded}}">{{year.year_founded}}</option>
+                {%endfor%}
+                {% endif %}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label for="validationServer03" class="form-label">Locality</label>
+            <select class="form-select" id="validationServer03" aria-describedby="validationServer03Feedback" required>
+              <option selected disabled value="">Locality</option>
+              <option>
+                {% if localities %}
+                {% for locality in localities%}
+                <option value="{{locality.locality}}">{{locality.locality}}</option>
+                {%endfor%}
+                {% endif %}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label for="validationServer03" class="form-label">Employees (From) </label>
+            <select class="form-select" id="validationServer03" aria-describedby="validationServer03Feedback" required>
+              <option selected disabled value="">Employees(From)</option>
+              <option>
+                {% if company_names %}
+                {% for name in company_names%}
+                <option value="{{name.name}}">{{name.name}}</option>
+                {%endfor%}
+                {% endif %}
+              </option>
+            </select>
+          </div>
+
+
+         
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Query</button>
+        </div>
+      </form>
+
+</div>
+
+{%endblock body%}

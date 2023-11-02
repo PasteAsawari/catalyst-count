@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+{% block title%} Upload Data {% endblock title %}
+{% block body %}
+
+<form class="container mt-5" method="post" enctype="multipart/form-data">
+    <h3>Hello!</h3>
+
+    {% csrf_token %}
+    <input type="file" name="file" class="mt-5">
+    <br><br>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+{%endblock body%}
